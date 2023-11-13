@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 2</title>
+</head>
+
+<style>
+body 
+{
+    background-color: white;
+    text-align: center;
+}
+
+h1 
+{
+    margin-top: 250px;
+}
+</style>
+
+<body>
+
+    <h1>Income Tax Calculator</h1>
+
+    <label for="income">Annual Income:</label>
+    <input type="number" id="income" placeholder="Enter your annual income">
+
+    <button onclick="calculateTax()">Calculate Tax</button>
+
+    <p id="result">
+    
+    <br>
+    <p>Based on the 2020 national income tax rates in the Philippines.</p>
+
+    <p>  
+        <a href="assHome.html">Back to Home Page</a>
+    </p>
+
+    <script>
+        function calculateTax() 
+        {
+            // Get the user's input for annual income
+            var income = document.getElementById("income").value;
+
+            // Perform a simple tax calculation (adjust based on your tax laws)
+            var tax;
+            if (income <= 250000) 
+            {
+                tax = 0.0 * income;
+            } 
+            else if (income <= 400000) 
+            {
+                tax = 0.2 * income;
+            } 
+            else if (income <= 800000)
+            {
+                tax = 0.25 * income;
+            }
+            else if (income <= 2000000)
+            {
+                tax = 0.3 * income;
+            }
+            else if (income <= 8000000)
+            {
+                tax = 0.32 * income;
+            }
+            else
+            {
+                tax = 0.35 * income;
+            }
+            
+            // Display the result
+            document.getElementById("result").innerHTML = "Your estimated tax: ₱" + tax.toFixed(2);
+        }
+
+    </script>
+
+</body>
+</html>
