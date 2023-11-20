@@ -49,10 +49,15 @@
 
         function addEmployee() 
         {
-            var employeeName = prompt("Enter Employee Name:");
+            <! -- var employeeName = prompt("Enter Employee Name:");
             var daysWorked = parseFloat(prompt("Enter Days Worked:"));
             var dailyRate = parseFloat(prompt("Enter Daily Rate:"));
-            var deductionAmount = parseFloat(prompt("Enter Deduction Amount:"));
+            var deductionAmount = parseFloat(prompt("Enter Deduction Amount:")); -->
+
+            <input id="employeeName" name="employeeName" type="text">
+            <input id="daysWorked" name="daysWorked" type="number">
+            <input id="dailyRate" name="dailyRate" type="number">
+            <input id="deductionAmount" name="deductionAmount" type="number">
 
             if (isNaN(daysWorked) || isNaN(dailyRate) || isNaN(deductionAmount)) 
             {
