@@ -1,17 +1,16 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Assignment 4</title>
     <style>
-        table 
-        {
+        table {
             border-collapse: collapse;
             width: 100%;
         }
 
-        th, td
-        {
+        th, td {
             border: 1px solid #ffb2b2;
             padding: 8px;
             text-align: left;
@@ -43,31 +42,17 @@
     <p>  
         <a href="index.html">Back to Home Page</a>
     </p>
-    
+
     <script>
         var payrollData = [];
 
-        function addEmployee() 
-        {
-           /* var employeeName = prompt("Enter Employee Name:");
-            var daysWorked = parseFloat(prompt("Enter Days Worked:"));
-            var dailyRate = parseFloat(prompt("Enter Daily Rate:"));
-            var deductionAmount = parseFloat(prompt("Enter Deduction Amount:")); */
+        function addEmployee() {
+            var employeeName = document.getElementById("employeeNameInput").value;
+            var daysWorked = parseFloat(document.getElementById("daysWorkedInput").value);
+            var dailyRate = parseFloat(document.getElementById("dailyRateInput").value);
+            var deductionAmount = parseFloat(document.getElementById("deductionAmountInput").value);
 
-            <label for="employeeName">Employee Name</label>
-            <input id="employeeName" name="employeeName" type="text">
-                
-            <label for="daysWorked">Days Worked</label>
-            <input id="daysWorked" name="daysWorked" type="number">
-                
-            <label for="dailyRate">Daily Rate</label>
-            <input id="dailyRate" name="dailyRate" type="number">
-                
-            <label for="deductionAmount">Deduction Amount</label>
-            <input id="deductionAmount" name="deductionAmount" type="number">
-
-            if (isNaN(daysWorked) || isNaN(dailyRate) || isNaN(deductionAmount)) 
-            {
+            if (isNaN(daysWorked) || isNaN(dailyRate) || isNaN(deductionAmount)) {
                 alert("Invalid input. Please enter valid numeric values.");
                 return;
             }
@@ -75,8 +60,7 @@
             var grossPay = daysWorked * dailyRate;
             var netPay = grossPay - deductionAmount;
 
-            var payrollEntry = 
-            {
+            var payrollEntry = {
                 employeeName: employeeName,
                 daysWorked: daysWorked,
                 dailyRate: dailyRate,
@@ -89,12 +73,10 @@
             displayPayroll();
         }
 
-        function deleteEmployee() 
-        {
-            var lineNumberToDelete = parseInt(prompt("Enter Line Number to Delete:")) - 1;
+        function deleteEmployee() {
+            var lineNumberToDelete = parseInt(document.getElementById("lineNumberInput").value) - 1;
 
-            if (isNaN(lineNumberToDelete) || lineNumberToDelete < 0 || lineNumberToDelete >= payrollData.length) 
-            {
+            if (isNaN(lineNumberToDelete) || lineNumberToDelete < 0 || lineNumberToDelete >= payrollData.length) {
                 alert("Invalid Line Number. Please enter a valid number.");
                 return;
             }
@@ -103,13 +85,11 @@
             displayPayroll();
         }
 
-        function displayPayroll() 
-        {
+        function displayPayroll() {
             var payrollBody = document.getElementById("payrollBody");
             payrollBody.innerHTML = "";
 
-            payrollData.forEach(function (entry, index) 
-            {
+            payrollData.forEach(function (entry, index) {
                 var row = payrollBody.insertRow();
                 var cellNumber = row.insertCell(0);
                 var cellEmployeeName = row.insertCell(1);
@@ -129,6 +109,21 @@
             });
         }
     </script>
+
+    <label for="employeeNameInput">Employee Name:</label>
+    <input type="text" id="employeeNameInput"><br>
+
+    <label for="daysWorkedInput">Days Worked:</label>
+    <input type="text" id="daysWorkedInput"><br>
+
+    <label for="dailyRateInput">Daily Rate:</label>
+    <input type="text" id="dailyRateInput"><br>
+
+    <label for="deductionAmountInput">Deduction Amount:</label>
+    <input type="text" id="deductionAmountInput"><br>
+
+    <label for="lineNumberInput">Line Number to Delete:</label>
+    <input type="text" id="lineNumberInput"><br>
 
 </body>
 </html>
