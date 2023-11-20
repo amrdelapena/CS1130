@@ -54,9 +54,16 @@
             var dailyRate = parseFloat(prompt("Enter Daily Rate:"));
             var deductionAmount = parseFloat(prompt("Enter Deduction Amount:")); */
 
+            <label for="employeeName">Employee Name</label>
             <input id="employeeName" name="employeeName" type="text">
+                
+            <label for="daysWorked">Days Worked</label>
             <input id="daysWorked" name="daysWorked" type="number">
+                
+            <label for="dailyRate">Daily Rate</label>
             <input id="dailyRate" name="dailyRate" type="number">
+                
+            <label for="deductionAmount">Deduction Amount</label>
             <input id="deductionAmount" name="deductionAmount" type="number">
 
             if (isNaN(daysWorked) || isNaN(dailyRate) || isNaN(deductionAmount)) 
