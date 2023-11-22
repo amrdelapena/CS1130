@@ -35,13 +35,13 @@ h1
         <br>
         <label for="number">Enter a number:</label>
         <input type="number" id="number" placeholder="Enter a number">
-        <button onclick="factorial()">Calculate Factorial</button>
+        <button id="factorial">Calculate Factorial</button>
         <p id="result1"></p>
     </div>
 
     <div id="sumCalculator" style="display: none;">
         <br>
-        <button onclick="sum()">Add Number</button>
+        <button id="sum">Add Number</button>
         <p id="result2"></p>
     </div>
 
@@ -49,7 +49,7 @@ h1
         <br>
         <label for="n">Enter a value for N:</label>
         <input type="number" id="n" placeholder="Enter N">
-        <button onclick="average()">Calculate Average</button>
+        <button id="average">Calculate Average</button>
         <p id="result3"></p>
     </div>
 
@@ -69,6 +69,7 @@ document.addEventListener("DOMContentLoaded", function ()
 
     document.getElementById("clearButton").addEventListener("click", clearValues);
 });
+    
     function selectCalculator() 
     {
         var calculatorSelector = document.getElementById("calculatorSelector");
@@ -156,9 +157,7 @@ document.addEventListener("DOMContentLoaded", function ()
     function clearValues() 
     {
         document.getElementById("number").value = "";
-        document.getElementById("result1").value = "";
-        document.getElementById("result2").value = "";
-        document.getElementById("result3").value = "";
+
     }
 </script>
 
