@@ -8,12 +8,14 @@
 </head>
 
 <style>
-    body {
+    body 
+    {
         background-color: white;
         text-align: center;
     }
 
-    h1 {
+    h1 
+    {
         margin-top: 250px;
     }
 </style>
@@ -78,13 +80,15 @@
         <input id="result4" name="result4" type="number" readonly></input>
     </div>
 
+    <button id="clearButton">Clear Values</button>
     <br>
     <p>
         <a href="index.html">Back to Home Page</a>
     </p>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("loadPage", function () 
+    {
         // Add event listener for the change event on the conversionType select element
         document.getElementById("conversionType").addEventListener("change", toggleConversion);
 
@@ -93,9 +97,12 @@
         document.getElementById("fahrenheitToCelsiusButton").addEventListener("click", FtoC);
         document.getElementById("metersToFeetButton").addEventListener("click", MtoF);
         document.getElementById("feetToMetersButton").addEventListener("click", FtoM);
+
+        document.getElementById("clearButton").addEventListener("click", clearValues);
     });
 
-    function toggleConversion() {
+    function toggleConversion() 
+    {
         var conversionType = document.getElementById("conversionType").value;
 
         document.getElementById("celsiusToFahrenheitConverter").style.display = (conversionType === "celsiusToFahrenheit") ? "block" : "none";
@@ -104,36 +111,49 @@
         document.getElementById("feetToMetersConverter").style.display = (conversionType === "feetToMeters") ? "block" : "none";
     }
 
-    function CtoF() {
+    function CtoF() 
+    {
         var x = document.getElementById("celsius").value * 1;
         let F = (x * 9 / 5) + 32;
         document.getElementById("r1").innerHTML = 'Fahrenheit';
         document.getElementById("result1").value = F;
     }
 
-    function FtoC() {
+    function FtoC() 
+    {
         var y = document.getElementById("fahrenheit").value * 1;
         let C = (y - 32) * 5 / 9;
         document.getElementById("r2").innerHTML = 'Celsius';
         document.getElementById("result2").value = C;
     }
 
-    function MtoF() {
+    function MtoF()
+    {
         var a = document.getElementById("meters").value * 1;
         let feet = a * 3.28084;
         document.getElementById("r3").innerHTML = 'Feet';
         document.getElementById("result3").value = feet;
     }
 
-    function FtoM() {
+    function FtoM() 
+    {
         var b = document.getElementById("feet").value * 1;
         let meters = b / 3.28084;
         document.getElementById("r4").innerHTML = 'Meters';
         document.getElementById("result4").value = meters;
     }
+    
+    function clearValues() 
+    {
+        document.getElementById("celsius").value = "";
+        document.getElementById("fahrenheit").value = "";
+        document.getElementById("meters").value = "";
+        document.getElementById("feet").value = "";
+        document.getElementById("result1").value = "";
+        document.getElementById("result2").value = "";
+        document.getElementById("result3").value = "";
+        document.getElementById("result4").value = "";
+    }
 </script>
-</body>
-</html>
-
 </body>
 </html>
