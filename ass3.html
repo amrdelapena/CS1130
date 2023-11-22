@@ -24,7 +24,7 @@ h1
     <h1>Factorial, Sum, and Average of the First N Numbers</h1>
 
     <label for="calculatorSelector">Select a Calculator:</label>
-    <select id="calculatorSelector" onchange="selectCalculator()">
+    <select id="calculatorSelector">
         <option value="" disabled selected>Choose a calculator</option>
         <option value="factorial">Factorial Calculator</option>
         <option value="sum">Sum Calculator</option>
@@ -53,107 +53,114 @@ h1
         <p id="result3"></p>
     </div>
 
+    <button id="clearButton">Clear Values</button>
     <p>  
         <a href="index.html">Back to Home Page</a>
     </p>
 
-    <script>
-        function selectCalculator() 
+<script>
+document.addEventListener("DOMContentLoaded", function () 
+{
+    document.getElementById("calculatorSelector").addEventListener("change", selectCalculator);
+
+    document.getElementById("sum").addEventListener("click", sum);
+    document.getElementById("factorial").addEventListener("click", factorial);
+    document.getElementById("average").addEventListener("click", average);
+
+    document.getElementById("clearButton").addEventListener("click", clearValues);
+});
+    function selectCalculator() 
+    {
+        var calculatorSelector = document.getElementById("calculatorSelector");
+        var selectedCalculator = calculatorSelector.value;
+
+        document.getElementById("factorialCalculator").style.display = "none";
+        document.getElementById("sumCalculator").style.display = "none";
+        document.getElementById("averageCalculator").style.display = "none";
+
+        if (selectedCalculator !== "") 
         {
-            var calculatorSelector = document.getElementById("calculatorSelector");
-            var selectedCalculator = calculatorSelector.value;
-
-            // Hide all calculators
-            document.getElementById("factorialCalculator").style.display = "none";
-            document.getElementById("sumCalculator").style.display = "none";
-            document.getElementById("averageCalculator").style.display = "none";
-
-            // Show the selected calculator
-            if (selectedCalculator !== "") 
-            {
-                document.getElementById(selectedCalculator + "Calculator").style.display = "block";
-            }
+            document.getElementById(selectedCalculator + "Calculator").style.display = "block";
         }
-        function factorial() //While loop
+    }
+    function factorial() //While loop
+    {
+        var inputNumber = document.getElementById("number").value;
+
+        if (inputNumber === "" || isNaN(inputNumber) || parseInt(inputNumber) < 0) 
         {
-            // Get the user's input for the number
-            var inputNumber = document.getElementById("number").value;
-
-            // Check if the input is a non-negative integer
-            if (inputNumber === "" || isNaN(inputNumber) || parseInt(inputNumber) < 0) 
-            {
-                alert("Please enter a non-negative integer.");
-                return;
-            }
-
-            // Convert the input to an integer
-            var number = parseInt(inputNumber);
-
-            // Calculate the factorial using a while loop
-            var factorial = 1;
-            var i = 1;
-
-            while (i <= number) 
-            {
-                factorial *= i;
-                i++;
-            }
-
-            // Display the result
-            document.getElementById("result1").innerHTML = "Factorial of " + number + " is: " + factorial;
+            alert("Please enter a non-negative integer.");
+            return;
         }
 
-        function sum() //Do-while loop
+        var number = parseInt(inputNumber);
+
+        var factorial = 1;
+        var i = 1;
+
+        while (i <= number) 
         {
-            var sum = 0;
-            var userInput;
-
-            do 
-            {
-                userInput = prompt("Enter a number (enter 0 to finish):");
-
-                // Parse the user input to a number
-                var number = parseFloat(userInput);
-
-                // Check if the input is a valid number
-                if (!isNaN(number)) 
-                {
-                    sum += number;
-                } else if (userInput !== null) 
-                {
-                    alert("Invalid input. Please enter a valid number.");
-                }
-            } while (userInput !== null && userInput !== "0");
-
-            // Display the result
-            document.getElementById("result2").innerHTML = "The sum is: " + sum;
+            factorial *= i;
+            i++;
         }
 
-        function average() //For loop
+        document.getElementById("result1").innerHTML = "Factorial of " + number + " is: " + factorial;
+    }
+
+    function sum() //Do-while loop
+    {
+        var sum = 0;
+        var userInput;
+
+        do 
         {
-            var n = document.getElementById("n").value;
+            userInput = prompt("Enter a number (enter 0 to finish):");
 
-            // Validate input
-            if (isNaN(n) || n <= 0) 
+            var number = parseFloat(userInput);
+
+            if (!isNaN(number)) 
             {
-                alert("Please enter a positive number for N.");
-                return;
-            }
-
-            n = parseInt(n);
-            var sum = 0;
-
-            for (var i = 1; i <= n; i++) 
+                sum += number;
+            } else if (userInput !== null) 
             {
-                sum += i;
+                alert("Invalid input. Please enter a valid number.");
             }
+        } while (userInput !== null && userInput !== "0");
 
-            var average = sum / n;
+        document.getElementById("result2").innerHTML = "The sum is: " + sum;
+    }
 
-            // Display the result
-            document.getElementById("result3").innerHTML = "The average of the first " + n + " natural numbers is: " + average.toFixed(2);
+    function average() //For loop
+    {
+        var n = document.getElementById("n").value;
+
+        if (isNaN(n) || n <= 0) 
+        {
+            alert("Please enter a positive number for N.");
+            return;
         }
-    </script>
+
+        n = parseInt(n);
+        var sum = 0;
+
+        for (var i = 1; i <= n; i++) 
+        {
+            sum += i;
+        }
+
+        var average = sum / n;
+
+        document.getElementById("result3").innerHTML = "The average of the first " + n + " natural numbers is: " + average.toFixed(2);
+    }
+    
+    function clearValues() 
+    {
+        document.getElementById("number").value = "";
+        document.getElementById("result1").value = "";
+        document.getElementById("result2").value = "";
+        document.getElementById("result3").value = "";
+    }
+</script>
 
 </body>
 </html>
