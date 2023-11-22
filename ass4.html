@@ -60,20 +60,20 @@
 <script>
 document.addEventListener("DOMContentLoaded", function () 
 {
-    document.getElementById("calculatorSelector").addEventListener("change", selectCalculator);
-
     document.getElementById("addEmployee").addEventListener("click", addEmployee);
     document.getElementById("deleteEmployee").addEventListener("click", deleteEmployee);
 });
     var payrollData = [];
 
-    function addEmployee() {
+    function addEmployee() 
+    {
         var employeeName = document.getElementById("employeeNameInput").value;
         var daysWorked = parseFloat(document.getElementById("daysWorkedInput").value);
         var dailyRate = parseFloat(document.getElementById("dailyRateInput").value);
         var deductionAmount = parseFloat(document.getElementById("deductionAmountInput").value);
 
-        if (isNaN(daysWorked) || isNaN(dailyRate) || isNaN(deductionAmount)) {
+        if (isNaN(daysWorked) || isNaN(dailyRate) || isNaN(deductionAmount)) 
+        {
             alert("Invalid input. Please enter valid numeric values.");
             return;
         }
@@ -81,7 +81,8 @@ document.addEventListener("DOMContentLoaded", function ()
         var grossPay = daysWorked * dailyRate;
         var netPay = grossPay - deductionAmount;
 
-        var payrollEntry = {
+        var payrollEntry = 
+        {
             employeeName: employeeName,
             daysWorked: daysWorked,
             dailyRate: dailyRate,
@@ -94,10 +95,12 @@ document.addEventListener("DOMContentLoaded", function ()
         displayPayroll();
     }
 
-    function deleteEmployee() {
+    function deleteEmployee() 
+    {
         var lineNumberToDelete = parseInt(document.getElementById("lineNumberInput").value) - 1;
 
-        if (isNaN(lineNumberToDelete) || lineNumberToDelete < 0 || lineNumberToDelete >= payrollData.length) {
+        if (isNaN(lineNumberToDelete) || lineNumberToDelete < 0 || lineNumberToDelete >= payrollData.length) 
+        {
             alert("Invalid Line Number. Please enter a valid number.");
             return;
         }
@@ -106,11 +109,13 @@ document.addEventListener("DOMContentLoaded", function ()
         displayPayroll();
     }
 
-    function displayPayroll() {
+    function displayPayroll() 
+    {
         var payrollBody = document.getElementById("payrollBody");
         payrollBody.innerHTML = "";
 
-        payrollData.forEach(function (entry, index) {
+        payrollData.forEach(function (entry, index) 
+        {
             var row = payrollBody.insertRow();
             var cellNumber = row.insertCell(0);
             var cellEmployeeName = row.insertCell(1);
@@ -130,6 +135,5 @@ document.addEventListener("DOMContentLoaded", function ()
         });
     }
 </script>
-
 </body>
 </html>
