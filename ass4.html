@@ -4,15 +4,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Assignment 4</title>
     <style>
-        table {
+        table 
+        {
             border-collapse: collapse;
             width: 100%;
         }
 
-        th, td {
+        th, td 
+        {
             border: 1px solid #ffb2b2;
             padding: 8px;
             text-align: left;
+        }
+        tfoot
+        {
+            background-color: #ffb2b2;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -37,6 +44,14 @@
             </tr>
         </thead>
         <tbody id="payrollBody"></tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4">Total:</td>
+                <td id="totalGrossPay">0.00</td>
+                <td id="totalDeductionAmount">0.00</td>
+                <td id="totalNetPay">0.00</td>
+            </tr>
+        </tfoot>
     </table>
 
     <p>  
@@ -110,6 +125,18 @@ document.addEventListener("DOMContentLoaded", function ()
         displayPayroll();
     }
 
+function updateTotalAmounts() 
+{
+    totalGrossPay = payrollData.reduce((total, entry) => total + entry.grossPay, 0);
+    totalDeductionAmount = payrollData.reduce((total, entry) => total + entry.deductionAmount, 0);
+    totalNetPay = totalGrossPay - totalDeductionAmount;
+
+    document.getElementById("totalGrossPay").innerHTML = totalGrossPay.toFixed(2);
+    document.getElementById("totalDeductionAmount").innerHTML = totalDeductionAmount.toFixed(2);
+    document.getElementById("totalNetPay").innerHTML = totalNetPay.toFixed(2);
+}
+
+function displayPayroll()     
     function displayPayroll() 
     {
         var payrollBody = document.getElementById("payrollBody");
