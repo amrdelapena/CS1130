@@ -87,12 +87,10 @@
     </p>
 
 <script>
-    document.addEventListener("loadPage", function () 
+    document.addEventListener("DOMContentLoaded", function () 
     {
-        // Add event listener for the change event on the conversionType select element
         document.getElementById("conversionType").addEventListener("change", toggleConversion);
 
-        // Add event listeners for the click events on the buttons
         document.getElementById("celsiusToFahrenheitButton").addEventListener("click", CtoF);
         document.getElementById("fahrenheitToCelsiusButton").addEventListener("click", FtoC);
         document.getElementById("metersToFeetButton").addEventListener("click", MtoF);
