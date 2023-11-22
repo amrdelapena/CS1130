@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,8 +20,8 @@
 
     <h1>Simple Payroll</h1>
 
-    <button onclick="addEmployee()">Add Employee</button>
-    <button onclick="deleteEmployee()">Delete Employee</button>
+    <button id="addEmployee">Add Employee</button>
+    <button id="deleteEmployee">Delete Employee</button>
 
     <table id="payrollTable">
         <thead>
@@ -58,72 +57,79 @@
     <label for="lineNumberInput">Line Number to Delete:</label>
     <input type="text" id="lineNumberInput">
     
-    <script>
-        var payrollData = [];
+<script>
+document.addEventListener("DOMContentLoaded", function () 
+{
+    document.getElementById("calculatorSelector").addEventListener("change", selectCalculator);
 
-        function addEmployee() {
-            var employeeName = document.getElementById("employeeNameInput").value;
-            var daysWorked = parseFloat(document.getElementById("daysWorkedInput").value);
-            var dailyRate = parseFloat(document.getElementById("dailyRateInput").value);
-            var deductionAmount = parseFloat(document.getElementById("deductionAmountInput").value);
+    document.getElementById("addEmployee").addEventListener("click", addEmployee);
+    document.getElementById("deleteEmployee").addEventListener("click", deleteEmployee);
+});
+    var payrollData = [];
 
-            if (isNaN(daysWorked) || isNaN(dailyRate) || isNaN(deductionAmount)) {
-                alert("Invalid input. Please enter valid numeric values.");
-                return;
-            }
+    function addEmployee() {
+        var employeeName = document.getElementById("employeeNameInput").value;
+        var daysWorked = parseFloat(document.getElementById("daysWorkedInput").value);
+        var dailyRate = parseFloat(document.getElementById("dailyRateInput").value);
+        var deductionAmount = parseFloat(document.getElementById("deductionAmountInput").value);
 
-            var grossPay = daysWorked * dailyRate;
-            var netPay = grossPay - deductionAmount;
-
-            var payrollEntry = {
-                employeeName: employeeName,
-                daysWorked: daysWorked,
-                dailyRate: dailyRate,
-                grossPay: grossPay,
-                deductionAmount: deductionAmount,
-                netPay: netPay
-            };
-
-            payrollData.push(payrollEntry);
-            displayPayroll();
+        if (isNaN(daysWorked) || isNaN(dailyRate) || isNaN(deductionAmount)) {
+            alert("Invalid input. Please enter valid numeric values.");
+            return;
         }
 
-        function deleteEmployee() {
-            var lineNumberToDelete = parseInt(document.getElementById("lineNumberInput").value) - 1;
+        var grossPay = daysWorked * dailyRate;
+        var netPay = grossPay - deductionAmount;
 
-            if (isNaN(lineNumberToDelete) || lineNumberToDelete < 0 || lineNumberToDelete >= payrollData.length) {
-                alert("Invalid Line Number. Please enter a valid number.");
-                return;
-            }
+        var payrollEntry = {
+            employeeName: employeeName,
+            daysWorked: daysWorked,
+            dailyRate: dailyRate,
+            grossPay: grossPay,
+            deductionAmount: deductionAmount,
+            netPay: netPay
+        };
 
-            payrollData.splice(lineNumberToDelete, 1);
-            displayPayroll();
+        payrollData.push(payrollEntry);
+        displayPayroll();
+    }
+
+    function deleteEmployee() {
+        var lineNumberToDelete = parseInt(document.getElementById("lineNumberInput").value) - 1;
+
+        if (isNaN(lineNumberToDelete) || lineNumberToDelete < 0 || lineNumberToDelete >= payrollData.length) {
+            alert("Invalid Line Number. Please enter a valid number.");
+            return;
         }
 
-        function displayPayroll() {
-            var payrollBody = document.getElementById("payrollBody");
-            payrollBody.innerHTML = "";
+        payrollData.splice(lineNumberToDelete, 1);
+        displayPayroll();
+    }
 
-            payrollData.forEach(function (entry, index) {
-                var row = payrollBody.insertRow();
-                var cellNumber = row.insertCell(0);
-                var cellEmployeeName = row.insertCell(1);
-                var cellDaysWorked = row.insertCell(2);
-                var cellDailyRate = row.insertCell(3);
-                var cellGrossPay = row.insertCell(4);
-                var cellDeductionAmount = row.insertCell(5);
-                var cellNetPay = row.insertCell(6);
+    function displayPayroll() {
+        var payrollBody = document.getElementById("payrollBody");
+        payrollBody.innerHTML = "";
 
-                cellNumber.innerHTML = index + 1;
-                cellEmployeeName.innerHTML = entry.employeeName;
-                cellDaysWorked.innerHTML = entry.daysWorked;
-                cellDailyRate.innerHTML = entry.dailyRate.toFixed(2);
-                cellGrossPay.innerHTML = entry.grossPay.toFixed(2);
-                cellDeductionAmount.innerHTML = entry.deductionAmount.toFixed(2);
-                cellNetPay.innerHTML = entry.netPay.toFixed(2);
-            });
-        }
-    </script>
+        payrollData.forEach(function (entry, index) {
+            var row = payrollBody.insertRow();
+            var cellNumber = row.insertCell(0);
+            var cellEmployeeName = row.insertCell(1);
+            var cellDaysWorked = row.insertCell(2);
+            var cellDailyRate = row.insertCell(3);
+            var cellGrossPay = row.insertCell(4);
+            var cellDeductionAmount = row.insertCell(5);
+            var cellNetPay = row.insertCell(6);
+
+            cellNumber.innerHTML = index + 1;
+            cellEmployeeName.innerHTML = entry.employeeName;
+            cellDaysWorked.innerHTML = entry.daysWorked;
+            cellDailyRate.innerHTML = entry.dailyRate.toFixed(2);
+            cellGrossPay.innerHTML = entry.grossPay.toFixed(2);
+            cellDeductionAmount.innerHTML = entry.deductionAmount.toFixed(2);
+            cellNetPay.innerHTML = entry.netPay.toFixed(2);
+        });
+    }
+</script>
 
 </body>
 </html>
