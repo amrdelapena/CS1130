@@ -7,16 +7,40 @@
 </head>
 
 <style>
-body 
-{
-    background-color: white;
-    text-align: center;
-}
+    body 
+    {
+        background-color: white;
+        text-align: center;
+    }
+    
+    h1 
+    {
+        margin-top: 250px;
+    }
 
-h1 
-{
-    margin-top: 250px;
-}
+    .modal 
+    {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    }
+
+    .modal-button 
+    {
+        cursor: pointer;
+        margin-top: 20px;
+    }
+
+    #income 
+    {
+    width: 180px;
+    }
 </style>
 
 <body>
@@ -53,8 +77,18 @@ h1
         <p id="result3"></p>
     </div>
 
-    <button id="clearButton">Clear Values</button>
+    <button id="clearValuesButton" class="modal-button">Clear Values</button>
+
+    <div id="clearModal" class="modal">
+        <p>Do you want to clear values?</p>
+        <button class="modal-button" id="yesButton">Yes</button>
+        <button class="modal-button" id="noButton">No</button>
+    </div>
+    
     <p>  
+        Displays are rounded, inaccuracies is expected.
+        <br>
+        <br>
         <a href="index.html">Back to Home Page</a>
     </p>
 
@@ -67,7 +101,9 @@ document.addEventListener("DOMContentLoaded", function ()
     document.getElementById("factorial").addEventListener("click", factorial);
     document.getElementById("average").addEventListener("click", average);
 
-    document.getElementById("clearButton").addEventListener("click", clearValues);
+    document.getElementById("clearValuesButton").addEventListener("click", openModal);
+    document.getElementById("yesButton").addEventListener("click", clearValues);
+    document.getElementById("noButton").addEventListener("click", closeModal);
 });
     
     function selectCalculator() 
@@ -153,9 +189,20 @@ document.addEventListener("DOMContentLoaded", function ()
 
         document.getElementById("result3").innerHTML = "The average of the first " + n + " natural numbers is: " + average.toFixed(2);
     }
+
+    function openModal()
+    {
+        document.getElementById("clearModal").style.display = "block";
+    }
+    
+    function closeModal()
+    {
+        document.getElementById("clearModal").style.display = "none";
+    }
     
     function clearValues() 
     {
+        closeModal();
         document.getElementById("number").value = " ";
         document.getElementById("result1").innerHTML = " ";
         document.getElementById("result2").innerHTML = " ";
