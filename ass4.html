@@ -124,6 +124,8 @@ document.addEventListener("DOMContentLoaded", function ()
     document.getElementById("clearEmployeeButton").addEventListener("click", openModal);
     document.getElementById("yesButton").addEventListener("click", closeModal);
     document.getElementbyId("noButton").addEventListener("click", closeModal);
+
+    document.getElementById("clearAllButton").addEventListener("click", openClearAllModal);
 });
     var payrollData = [];
 
@@ -192,7 +194,7 @@ document.addEventListener("DOMContentLoaded", function ()
     function openClearAllModal() 
     {
         document.getElementById("clearModalText").innerText = "Do you want to clear all employees?";
-        openModal('clearAll');
+        openModal('clearAllEmployees');
     }
 
     function updateTotalAmounts() 
