@@ -168,7 +168,7 @@ document.addEventListener("DOMContentLoaded", function ()
 
     function deleteEmployee() 
     {
-        openModal();
+        closeModal();
         var lineNumberToDelete = parseInt(document.getElementById("lineNumberInput").value) - 1;
 
         if (isNaN(lineNumberToDelete) || lineNumberToDelete < 0 || lineNumberToDelete >= payrollData.length) 
