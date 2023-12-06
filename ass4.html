@@ -193,6 +193,7 @@ document.addEventListener("DOMContentLoaded", function ()
 
     function openClearAllModal() 
     {
+        closeModal();
         document.getElementById("modalQuestion").innerHTML = "Do you want to clear all employees?";
         document.getElementById("clearModal").style.display = "block";
     }
