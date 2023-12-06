@@ -17,6 +17,25 @@
     {
         margin-top: 250px;
     }
+
+    .modal 
+    {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    }
+
+    .modal-button 
+    {
+        cursor: pointer;
+        margin-top: 20px;
+    }
 </style>
 
 <body>
@@ -78,10 +97,13 @@
         <label for="result4" id="r4">Meters</label>
         <input id="result4" name="result4" type="number" dir="rtl" readonly></input>
     </div>
-
     <br>
-    <button id="clearButton">Clear Values</button>
-    <br>
+    
+    <div id="clearModal" class="modal">
+        <p>Do you want to clear values?</p>
+        <button class="modal-button" id="closeModalButton">Clear Values</button>
+    </div>
+    
     <p>
         Results are rounded, inaccuracy is expected. 
         <br>
@@ -99,7 +121,7 @@
         document.getElementById("metersToFeetButton").addEventListener("click", MtoF);
         document.getElementById("feetToMetersButton").addEventListener("click", FtoM);
 
-        document.getElementById("clearButton").addEventListener("click", clearValues);
+        document.getElementById("closeModalButton").addEventListener("click", closeModal);
     });
 
     function toggleConversion() 
@@ -143,9 +165,20 @@
         document.getElementById("r4").innerHTML = 'Meters';
         document.getElementById("result4").value = meters;
     }
+
+    function openModal()
+    {
+        document.getElementById("clearModal").style.display = "block";
+    }
     
+    function closeModal()
+    {
+        document.getElementById("clearModal").style.display = "none";
+    }
+
     function clearValues() 
     {
+        closeModal();
         document.getElementById("celsius").value = "";
         document.getElementById("fahrenheit").value = "";
         document.getElementById("meters").value = "";
