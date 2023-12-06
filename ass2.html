@@ -17,6 +17,25 @@
     {
        margin-top: 250px;
     }
+    
+    .modal 
+    {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    }
+
+    .modal-button 
+    {
+        cursor: pointer;
+        margin-top: 20px;
+    }
 </style>
 
 <body>
@@ -24,10 +43,16 @@
     <h1>Income Tax Calculator</h1>
 
     <label for="income">Annual Income:</label>
-    <input type="number" id="income" placeholder="Enter your annual income">
+    <input type="number" id="income" dir="rtl" placeholder="Enter your annual income">
 
     <button id="calculateTaxButton">Calculate Tax</button>
-    <button id="clearValuesButton">Clear Values</button>
+
+    <button id="clearValuesButton" class="modal-button">Clear Values</button>
+
+    <div id="clearModal" class="modal">
+        <p>Do you want to clear values?</p>
+        <button class="modal-button" id="closeModalButton">Yes</button>
+    </div>
 
     <p id="result"></p>
 
@@ -42,7 +67,8 @@
     document.addEventListener("DOMContentLoaded", function () 
     {
         document.getElementById("calculateTaxButton").addEventListener("click", calculateTax);
-        document.getElementById("clearValuesButton").addEventListener("click", clearValues);
+        document.getElementById("clearValuesButton").addEventListener("click", openModal);
+        document.getElementById("closeModalButton").addEventListener("click", clearValues);
     });
 
     function calculateTax() 
@@ -73,8 +99,19 @@
         document.getElementById("result").innerHTML = "Your estimated tax: ₱" + tax.toFixed(2);
     }
 
+    function openModal()
+    {
+        document.getElementById("clearModal").style.display = "block";
+    }
+    
+    function closeModal()
+    {
+        document.getElementById("clearModal").style.display = "none";
+    }
+
     function clearValues() 
     {
+        closeModal();
         document.getElementById("income").value = "";
         document.getElementById("result").innerHTML = "";
     }
