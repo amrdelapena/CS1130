@@ -118,15 +118,13 @@
     
 <script>
 document.addEventListener("DOMContentLoaded", function () 
-    {
+{
     document.getElementById("addEmployee").addEventListener("click", addEmployee);
-        
     document.getElementById("clearEmployeeButton").addEventListener("click", openModal);
     document.getElementById("yesButton").addEventListener("click", deleteEmployee);
     document.getElementById("noButton").addEventListener("click", closeModal);
-
-    document.getElementById("clearAllButton").addEventListener("click", openClearAllModal);
-    });
+    document.getElementById("clearAllButton").addEventListener("click", clearAllEmployees);
+});
     var payrollData = [];
 
     function addEmployee() 
@@ -193,8 +191,8 @@ document.addEventListener("DOMContentLoaded", function ()
 
     function openClearAllModal() 
     {
-        document.getElementById("clearModalText").innerText = "Do you want to clear all employees?";
-        openModal('clearAllEmployees');
+    document.getElementById("clearModalText").innerText = "Do you want to clear all employees?";
+    openModal();
     }
 
     function updateTotalAmounts() 
