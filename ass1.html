@@ -115,7 +115,7 @@
     function CtoF() 
     {
         var x = document.getElementById("celsius").value * 1;
-        let F = Math.ceil((x * 9 / 5) + 32);
+        let F = round((x * 9 / 5) + 32);
         document.getElementById("r1").innerHTML = 'Fahrenheit';
         document.getElementById("result1").value = F;
     }
@@ -123,7 +123,7 @@
     function FtoC() 
     {
         var y = document.getElementById("fahrenheit").value * 1;
-        let C = Math.ceil((y - 32) * 5 / 9);
+        let C = round((y - 32) * 5 / 9);
         document.getElementById("r2").innerHTML = 'Celsius';
         document.getElementById("result2").value = C;
     }
@@ -131,7 +131,7 @@
     function MtoF()
     {
         var a = document.getElementById("meters").value * 1;
-        let feet = Math.ceil(a * 3.28084);
+        let feet = round(a * 3.28084);
         document.getElementById("r3").innerHTML = 'Feet';
         document.getElementById("result3").value = feet;
     }
@@ -139,7 +139,7 @@
     function FtoM() 
     {
         var b = document.getElementById("feet").value * 1;
-        let meters = Math.ceil(b / 3.28084);
+        let meters = round(b / 3.28084);
         document.getElementById("r4").innerHTML = 'Meters';
         document.getElementById("result4").value = meters;
     }
