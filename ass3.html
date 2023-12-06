@@ -75,6 +75,7 @@
         <input type="number" id="n" dir="rtl" placeholder="Enter N">
         <button id="average">Calculate Average</button>
         <p id="result3"></p>
+        <p>The average as an integer display is rounded. Inaccuracy is expected.</p>
     </div>
 
     <button id="clearValuesButton" class="modal-button">Clear Values</button>
@@ -184,7 +185,7 @@ document.addEventListener("DOMContentLoaded", function ()
 
         var average = sum / n;
 
-        document.getElementById("result3").innerHTML = "The average of the first " + n + " natural numbers is: " + average.toFixed(2);
+        document.getElementById("result3").innerHTML = "The average of the first " + n + " natural numbers is: " + average.toFixed(0);
     }
 
     function openModal()
