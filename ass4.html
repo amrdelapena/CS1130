@@ -120,13 +120,11 @@
 document.addEventListener("DOMContentLoaded", function () 
     {
     document.getElementById("addEmployee").addEventListener("click", addEmployee);
-
     document.getElementById("clearEmployeeButton").addEventListener("click", function () 
     {
         openModal('clearAll');
     });
-
-    document.getElementById("yesButton").addEventListener("click", function ()
+    document.getElementById("yesButton").addEventListener("click", function () 
     {
         var clearAll = document.getElementById("clearModalText").innerText === "Do you want to clear all employees?";
         if (clearAll) 
@@ -138,9 +136,7 @@ document.addEventListener("DOMContentLoaded", function ()
         }
         closeModal();
     });
-
     document.getElementById("noButton").addEventListener("click", closeModal);
-
     document.getElementById("clearAllButton").addEventListener("click", openClearAllModal);
 });
     var payrollData = [];
