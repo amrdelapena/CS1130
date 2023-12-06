@@ -85,6 +85,14 @@
         <button class="modal-button" id="yesButton">Yes</button>
         <button class="modal-button" id="noButton">No</button>
     </div>
+
+    <button id="clearAllEmployeesButton" class="modal-button">Clear All Employees</button>
+
+    <div id="clearAllEmployeesModal" class="modal">
+        <p>Do you want to clear all employees?</p>
+        <button class="modal-button" id="yesClearAllButton">Yes</button>
+        <button class="modal-button" id="noClearAllButton">No</button>
+    </div>
     
     <br><br>
     
@@ -123,6 +131,10 @@ document.addEventListener("DOMContentLoaded", function ()
     document.getElementById("clearEmployeeButton").addEventListener("click", openModal);
     document.getElementById("yesButton").addEventListener("click", deleteEmployee);
     document.getElementById("noButton").addEventListener("click", closeModal);
+
+    document.getElementById("clearAllEmployeesButton").addEventListener("click", openClearAllModal);
+    document.getElementById("yesClearAllButton").addEventListener("click", clearAllEmployees);
+    document.getElementById("noClearAllButton").addEventListener("click", closeClearAllModal);
 });
     var payrollData = [];
 
@@ -179,6 +191,23 @@ document.addEventListener("DOMContentLoaded", function ()
 
         payrollData.splice(lineNumberToDelete, 1);
         displayPayroll();
+    }
+
+    function openClearAllModal() 
+    {
+    document.getElementById("clearAllEmployeesModal").style.display = "block";
+    }
+    
+    function closeClearAllModal() 
+    {
+    document.getElementById("clearAllEmployeesModal").style.display = "none";
+    }
+    
+    function clearAllEmployees() 
+    {
+    payrollData = []; // Clear the array
+    displayPayroll();
+    closeClearAllModal();
     }
 
     function updateTotalAmounts() 
