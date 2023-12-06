@@ -156,6 +156,16 @@ document.addEventListener("DOMContentLoaded", function ()
         displayPayroll();
     }
 
+    function openModal()
+    {
+        document.getElementById("clearModal").style.display = "block";
+    }
+    
+    function closeModal()
+    {
+        document.getElementById("clearModal").style.display = "none";
+    }
+
     function deleteEmployee() 
     {
         openModal();
