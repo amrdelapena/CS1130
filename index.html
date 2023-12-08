@@ -56,12 +56,14 @@
         function playSoundEffectHover() 
         {
             var audio = new Audio('audio/hover.m4a');
+            audio.preload = 'auto';
             audio.play();
         }
 
         function playSoundEffectClick() 
         {
             var audio = new Audio('audio/clicked.m4a');
+            audio.preload = 'auto';
             audio.play();
         }
 
