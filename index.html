@@ -52,41 +52,48 @@
     <br>
     <button id="assignment4" class="button">Assignment #4 - Simple Payroll</button>
 
-    <script>
-        function playSoundEffectHover() 
-        {
-            var audio = new Audio('audio/hover.m4a');
-            audio.preload = 'auto';
-            audio.play();
-        }
+<script>
+    function playSoundEffectHover() 
+    {
+        var audio = new Audio('audio/hover.m4a');
+        audio.preload = 'auto';
+        audio.play();
+    }
 
-        function playSoundEffectClick() 
-        {
-            var audio = new Audio('audio/clicked.m4a');
-            audio.preload = 'auto';
-            audio.play();
-        }
+    function playSoundEffectClick() 
+    {
+        var audio = new Audio('audio/clicked.m4a');
+        audio.preload = 'auto';
+        audio.play();
+    }
 
-        function addSoundEffectsToButton(buttonId, url) 
-        {
-            var button = document.getElementById(buttonId);
+    function addSoundEffectsToButton(buttonId, url) 
+    {
+        var button = document.getElementById(buttonId);
 
-            button.addEventListener("mouseenter", function () 
+        button.addEventListener("mousedown", function () 
+        {
+            playSoundEffectClick();
+        });
+
+        button.addEventListener("mouseover", function () 
+        {
+            playSoundEffectHover();
+        });
+
+        button.addEventListener("mouseup", function () 
+        {
+            setTimeout(function () 
             {
-                playSoundEffectHover();
-            });
-
-            button.addEventListener("click", function () 
-            {
-                playSoundEffectClick();
                 window.location.href = url;
-            });
-        }
+            }, 100);
+        });
+    }
 
-        addSoundEffectsToButton("assignment1", "ass1.html");
-        addSoundEffectsToButton("assignment2", "ass2.html");
-        addSoundEffectsToButton("assignment3", "ass3.html");
-        addSoundEffectsToButton("assignment4", "ass4.html");
-    </script>
+    addSoundEffectsToButton("assignment1", "ass1.html");
+    addSoundEffectsToButton("assignment2", "ass2.html");
+    addSoundEffectsToButton("assignment3", "ass3.html");
+    addSoundEffectsToButton("assignment4", "ass4.html");
+</script>
 </body>
 </html>
